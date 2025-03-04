@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import { ModeToggle } from "./ui/mode-toggle";
@@ -23,9 +22,9 @@ const Navbar = () => {
         {navs.map((nav) => {
           const isActive = location.pathname === nav.to;
           return (
-            <NavigationMenuItem key={nav.text}>
-              <Link to={nav.to}>
-                <NavigationMenuLink
+            <Link to={nav.to} key={nav.text}>
+              <NavigationMenuItem>
+                <span
                   className={cx(
                     navigationMenuTriggerStyle(),
                     isActive &&
@@ -33,9 +32,9 @@ const Navbar = () => {
                   )}
                 >
                   {nav.text}
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
+                </span>
+              </NavigationMenuItem>
+            </Link>
           );
         })}
       </div>
