@@ -16,21 +16,15 @@ export const StoreProvider = ({ children }: Props) => {
     });
   }, []);
 
-  useEffect(() => {
-    if (!store) {
-      return;
-    }
-
-    store.get("mods_path").then((path) => {
-      if (path) {
-        setModsPath(path as string);
-      }
-    });
-  }, []);
-
   if (!store) {
     return <></>;
   }
+
+  store.get("mods_path").then((path) => {
+    if (path) {
+      setModsPath(path as string);
+    }
+  });
 
   return (
     <StoreContext.Provider value={{ store, modsPath }}>

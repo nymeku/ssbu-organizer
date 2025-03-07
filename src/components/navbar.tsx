@@ -38,7 +38,7 @@ const Navbar = () => {
           );
         })}
       </div>
-      <ModeToggle />
+      {/* <ModeToggle /> */}
     </NavigationMenu>
   );
 };
